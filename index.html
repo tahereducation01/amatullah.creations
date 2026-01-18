@@ -86,13 +86,14 @@
             background-color: rgba(255, 249, 251, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 30px rgba(156, 27, 124, 0.15);
-            padding: 20px 0;
+            padding: 15px 0;
+            /* Reduced default padding for better mobile fit */
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-bottom: 1px solid rgba(156, 27, 124, 0.1);
         }
 
         .navbar.scrolled {
-            padding: 12px 0;
+            padding: 10px 0;
             background-color: rgba(255, 249, 251, 0.98);
             box-shadow: 0 10px 40px rgba(156, 27, 124, 0.2);
         }
@@ -100,7 +101,8 @@
         .navbar-brand {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 2.1rem;
+            font-size: 1.8rem;
+            /* Slightly smaller base size */
             background: var(--purple-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -108,25 +110,29 @@
             display: flex;
             align-items: center;
             position: relative;
+            gap: 10px;
+            max-width: 80%;
+            /* Ensures space for hamburger on mobile */
         }
 
+        /* The gold underline decoration - adjusted for better spacing */
         .navbar-brand:after {
             content: '';
             position: absolute;
             width: 100%;
-            height: 3px;
+            height: 2px;
             background: var(--gold-gradient);
-            bottom: -5px;
+            bottom: -2px;
             left: 0;
             border-radius: 2px;
         }
 
-        .navbar-brand .logo-icon {
-            margin-right: 10px;
-            font-size: 2rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Style for the new logo image */
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
         }
 
         .nav-link {
@@ -162,13 +168,46 @@
 
         .navbar-toggler {
             border: none;
-            padding: 0;
-            font-size: 1.8rem;
+            padding: 5px;
+            font-size: 1.5rem;
+            /* Adjusted for better scale */
+            color: var(--primary-color);
             background: transparent;
         }
 
         .navbar-toggler:focus {
             box-shadow: none;
+        }
+
+        /* MOBILE RESPONSIVENESS FIXES */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: white;
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-link {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.3rem;
+                /* Shrink text on mobile */
+            }
+
+            .logo-img {
+                height: 35px;
+                /* Shrink logo on mobile */
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
         }
 
         /* Hero Section */
@@ -1178,7 +1217,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="image.png" alt="Logo" class="logo-img">
                 Amatullah Creations
             </a>
